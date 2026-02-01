@@ -1,0 +1,143 @@
+---
+alwaysApply: true
+---
+
+# AI Development Context
+
+## My Core Philosophy
+
+```
+Most AI Tools: SPEED + VOLUME
+My AI Tools:   AUTHENTICITY + QUALITY
+```
+
+AI-generated content must be indistinguishable from expert human writing.
+
+---
+
+## Project Setup Standards
+
+### Tech Stack (Default)
+- Framework: Next.js (App Router) + TypeScript
+- Styling: Tailwind CSS
+- Deployment: Vercel
+- Packages: clsx, tailwind-merge, lucide-react, zod
+
+### Folder Structure
+```
+project/
+├── app/                    # Pages & routes
+├── components/
+│   ├── ui/                 # Button, Card, Input, Badge
+│   ├── layout/             # Header, Footer
+│   └── sections/           # Hero, Features, Pricing, CTA
+├── lib/utils.ts            # cn() and helpers
+├── config/site.ts          # Site metadata
+├── types/index.ts          # TypeScript types
+└── docs/                   # Documentation
+```
+
+### Naming Conventions
+- Components: `kebab-case.tsx` (PascalCase export)
+- Utilities: `kebab-case.ts`
+- Hooks: `use-*.ts`
+- Barrel exports: `index.ts` in each folder
+
+### Component Pattern
+```tsx
+import { cn } from "@/lib/utils";
+
+interface Props { className?: string; children?: React.ReactNode; }
+
+export function Component({ className, children }: Props) {
+  return <div className={cn("base-styles", className)}>{children}</div>;
+}
+```
+
+---
+
+## SEO Requirements (For Content Generation)
+
+### On-Page Essentials
+- Title: Primary keyword + <60 chars + compelling
+- Meta description: 150-160 chars + keyword + CTA
+- URL slug: Short, keyword, lowercase, hyphens
+- H1: One per page, matches title
+- Keyword in first 100 words, 1-2% density
+- Proper heading hierarchy: H1→H2→H3
+
+### Content Structure
+```
+Title → Meta → H1 → Intro (keyword) → TOC → H2 sections → FAQ → Conclusion → Schema
+```
+
+### Must Include
+- Internal links (3-5 per 1000 words)
+- External sources (1-2 authoritative)
+- Schema markup (Article, FAQ)
+- Image alt text with keywords
+- Short paragraphs, bullets, tables
+
+---
+
+## AI Content Rules (Critical)
+
+### Never Use These (AI Detection Triggers)
+```
+❌ "In today's fast-paced..."
+❌ "Let's dive in!"
+❌ "In conclusion..."
+❌ "Digital landscape"
+❌ "Cutting-edge"
+❌ "Seamlessly"
+❌ "Leverage"
+❌ "Robust"
+```
+
+### Always Include (Human Signals)
+```
+✅ First-person: "I tested...", "In my experience..."
+✅ Specific details: numbers, names, dates, places
+✅ Opinions and hot takes
+✅ Imperfect, natural sentence variation
+✅ Personality and voice
+✅ Original insights, not summaries
+```
+
+### E-E-A-T Signals
+- Experience: First-hand language, specific examples
+- Expertise: Author credentials, technical depth
+- Authority: Citations, sources, data
+- Trust: Accuracy, transparency, contact info
+
+---
+
+## Quick Checklists
+
+### Before Coding
+- [ ] TypeScript strict mode
+- [ ] Folder structure created
+- [ ] config/site.ts configured
+- [ ] lib/utils.ts with cn()
+- [ ] Base components ready
+
+### Before Deploying
+- [ ] `npm run build` passes
+- [ ] No TypeScript errors
+- [ ] Mobile responsive
+- [ ] Meta tags set
+- [ ] Images optimized
+
+### Content Quality Check
+- [ ] Sounds human (not robotic)
+- [ ] Has unique perspective
+- [ ] Includes specific details
+- [ ] One consistent voice
+- [ ] Would someone want to read this?
+
+---
+
+## Remember
+
+> Quality > Speed. Authenticity > Volume.
+> Build AI that creates content Google thinks a human expert wrote.
