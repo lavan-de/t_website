@@ -17,6 +17,8 @@ import {
   Copy,
   ArrowLeft,
   AlertCircle,
+  Save,
+  Loader2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -75,6 +77,9 @@ export default function BlogGeneratorPage() {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedResult, setGeneratedResult] = useState<GeneratedResult | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
+  const [isSaved, setIsSaved] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
   
   const [formData, setFormData] = useState<FormData>({
     topic: "",
@@ -144,6 +149,45 @@ export default function BlogGeneratorPage() {
   
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
+  };
+
+  const handleSave = async () => {
+    if (!generatedResult) return;
+    
+    setIsSaving(true);
+    setSaveError(null);
+    
+    try {
+      const response = await fetch("/api/blogs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          title: generatedResult.metadata.title,
+          slug: generatedResult.metadata.slug,
+          content: generatedResult.content,
+          meta_description: generatedResult.metadata.metaDescription,
+          topic: formData.topic,
+          primary_keyword: formData.primaryKeyword,
+          tone: formData.tone,
+          article_type: formData.articleType,
+          word_count: generatedResult.metadata.wordCount,
+        }),
+      });
+      
+      const data = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to save blog");
+      }
+      
+      setIsSaved(true);
+    } catch (err) {
+      setSaveError(err instanceof Error ? err.message : "Failed to save");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   // Generated content preview
@@ -331,10 +375,42 @@ export default function BlogGeneratorPage() {
                 <p className="text-center text-sm text-gray-400">Good SEO optimization</p>
               </div>
               
-              {/* Raw Markdown Copy */}
+              {/* Quick Actions */}
               <div className="rounded-xl border border-white/10 bg-white/5 p-6">
                 <h3 className="mb-4 font-semibold text-white">Quick Actions</h3>
                 <div className="space-y-2">
+                  {/* Save to Library Button */}
+                  <Button 
+                    className={cn(
+                      "w-full justify-start gap-2",
+                      isSaved 
+                        ? "bg-green-600 hover:bg-green-700" 
+                        : "bg-purple-600 hover:bg-purple-700"
+                    )}
+                    onClick={handleSave}
+                    disabled={isSaving || isSaved}
+                  >
+                    {isSaving ? (
+                      <>
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                        Saving...
+                      </>
+                    ) : isSaved ? (
+                      <>
+                        <Check className="h-4 w-4" />
+                        Saved to Library!
+                      </>
+                    ) : (
+                      <>
+                        <Save className="h-4 w-4" />
+                        Save to Library
+                      </>
+                    )}
+                  </Button>
+                  {saveError && (
+                    <p className="text-xs text-red-400">{saveError}</p>
+                  )}
+                  
                   <Button 
                     variant="outline" 
                     className="w-full justify-start gap-2"

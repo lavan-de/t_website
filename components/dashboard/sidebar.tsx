@@ -32,9 +32,9 @@ const mainNavItems = [
   },
   {
     title: "My Content",
-    href: "#",
+    href: "/dashboard/my-content",
     icon: FileText,
-    active: false,
+    active: true,
   },
   {
     title: "Analytics",

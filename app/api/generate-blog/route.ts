@@ -48,8 +48,8 @@ export async function POST(request: Request) {
       includeToc,
     });
 
-    // Call Gemini API
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    // Call Gemini API (using gemini-2.5-flash for free tier)
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const generatedContent = response.text();
@@ -80,8 +80,25 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     console.error("Error generating blog:", error);
+    
+    // Get more specific error message
+    let errorMessage = "Failed to generate blog content. Please try again.";
+    
+    if (error instanceof Error) {
+      // Check for common Gemini API errors
+      if (error.message.includes("API_KEY_INVALID") || error.message.includes("API key")) {
+        errorMessage = "Invalid API key. Please check your GEMINI_API_KEY in .env.local";
+      } else if (error.message.includes("quota") || error.message.includes("RATE_LIMIT")) {
+        errorMessage = "API quota exceeded. Please wait and try again later.";
+      } else if (error.message.includes("SAFETY")) {
+        errorMessage = "Content was blocked by safety filters. Try a different topic.";
+      } else {
+        errorMessage = `Error: ${error.message}`;
+      }
+    }
+    
     return NextResponse.json(
-      { error: "Failed to generate blog content. Please try again." },
+      { error: errorMessage },
       { status: 500 }
     );
   }
