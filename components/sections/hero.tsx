@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Button, Badge } from "@/components/ui";
 import { Sparkles } from "lucide-react";
 
@@ -28,16 +29,20 @@ export function HeroSection() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="group">
-              Start Free Trial
-              <span className="ml-2 group-hover:translate-x-1 transition-transform">
-                →
-              </span>
-            </Button>
-            <Button variant="outline" size="lg">
-              <span className="mr-2">▶</span>
-              Watch Demo
-            </Button>
+            <Link href="/dashboard">
+              <Button size="lg" className="group">
+                Open Dashboard
+                <span className="ml-2 group-hover:translate-x-1 transition-transform">
+                  →
+                </span>
+              </Button>
+            </Link>
+            <Link href="/dashboard/blog-generator">
+              <Button variant="outline" size="lg">
+                <Sparkles className="w-4 h-4 mr-2" />
+                Try Blog Generator
+              </Button>
+            </Link>
           </div>
 
           {/* Trust Indicators */}

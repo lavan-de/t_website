@@ -1,0 +1,221 @@
+---
+alwaysApply: false
+---
+
+# AI Blog Generator: User Input Framework
+
+> What data to collect from users to generate the best SEO-optimized content.
+
+---
+
+## Input Categories Overview
+
+```
+1. Brand Context       → Who they are (one-time setup)
+2. Target Audience     → Who they're writing for
+3. Content Generation  → What to create
+4. SEO Inputs          → Optimization specifics
+5. E-E-A-T Signals     → Human authenticity
+6. Linking Strategy    → Internal + external links
+7. Technical SEO       → Schema, meta, structure
+8. Media & Output      → Format, images, publishing
+```
+
+---
+
+## 1. BRAND CONTEXT (Setup once, reuse)
+
+| Input | Purpose |
+|-------|---------|
+| Company name | Brand mentions |
+| Website URL | Analyze voice, find internal links |
+| Industry/Niche | Terminology, context |
+| Brand voice | "Professional", "Casual expert", etc. |
+| Sample content URL | Learn their style |
+| Competitors (URLs) | Outrank analysis |
+| Unique selling points | Differentiation |
+
+---
+
+## 2. TARGET AUDIENCE
+
+| Input | Purpose |
+|-------|---------|
+| Reader type | B2B/B2C, job titles |
+| Expertise level | Beginner / Intermediate / Expert |
+| Pain points | Problems to address |
+| Search intent | Informational / Commercial / Transactional |
+| Geographic target | Local SEO, language |
+
+---
+
+## 3. CONTENT GENERATION
+
+| Input | Options |
+|-------|---------|
+| Quantity | Number of articles |
+| Topics | General (all) + Specific (per article) |
+| Article type | How-to, Listicle, Comparison, Review, Opinion, Case study |
+| Word count | Per article or bulk default (500-5000+) |
+| Tone preset | Conversational, Professional, Academic, Sales-focused |
+| Structure | Minimal / Standard / Detailed headings |
+
+---
+
+## 4. SEO INPUTS
+
+| Input | Purpose |
+|-------|---------|
+| Primary keyword | Main ranking target (1 per article) |
+| Secondary keywords | Supporting keywords (3-5 per article) |
+| Target search intent | Informational / Commercial / Transactional |
+| Featured snippet target | Structure for position 0 |
+| People Also Ask | Specific questions to answer |
+| Competitor URL to outrank | Analyze and beat |
+
+---
+
+## 5. E-E-A-T SIGNALS (Human authenticity)
+
+| Input | Purpose |
+|-------|---------|
+| Author name | Byline, expertise signal |
+| Author bio/credentials | "10 years experience", certifications |
+| First-hand experience | "We tested...", "Our data shows..." |
+| Original data/stats | Unique research to include |
+| Testimonials/quotes | Social proof |
+
+---
+
+## 6. LINKING STRATEGY
+
+| Input | Purpose |
+|-------|---------|
+| Internal links | Pages on their site to link to |
+| Pillar page URL | Main page for topic cluster |
+| External sources | Specific URLs or "auto-find" |
+| Products to mention | Natural product placement |
+| CTA destination | Where to send readers |
+
+---
+
+## 7. TECHNICAL SEO
+
+| Input | Options |
+|-------|---------|
+| Schema type | Article, HowTo, FAQ, Review, Product |
+| Include FAQ section | Yes / No |
+| Include TOC | Yes / No (for long articles) |
+| Meta description | AI-generated / User provides |
+| URL slug | Auto / Custom |
+
+---
+
+## 8. MEDIA & OUTPUT
+
+| Input | Options |
+|-------|---------|
+| Image prompts | Generate AI image prompts |
+| Alt text style | Descriptive / Keyword-focused |
+| Video suggestions | YouTube script ideas |
+| Output format | HTML / Markdown / JSON |
+| Target CMS | WordPress, Webflow, Ghost, etc. |
+
+---
+
+## Priority Tiers
+
+### MVP (Quick Mode)
+```
+• Topic
+• Primary keyword
+• Word count
+• Tone
+```
+
+### Standard Mode
+```
+MVP +
+• Article type
+• Target audience
+• Internal links
+• Author name
+• CTA goal
+```
+
+### Expert Mode
+```
+Standard +
+• Secondary keywords
+• Competitor analysis
+• E-E-A-T details
+• Schema selection
+• PAA questions
+• External sources
+```
+
+---
+
+## Smart Defaults
+
+| If user provides... | AI assumes... |
+|---------------------|---------------|
+| Only keyword | Auto-detect intent, word count, related keywords |
+| Website URL | Scrape brand voice, find internal link opportunities |
+| Competitor URL | Analyze content, find gaps, suggest angles |
+| Industry only | Suggest trending topics, common keywords |
+
+---
+
+## Generated Output Per Article
+
+```json
+{
+  "seo": {
+    "title": "...",
+    "metaDescription": "...",
+    "slug": "...",
+    "primaryKeyword": "...",
+    "secondaryKeywords": [],
+    "schema": {}
+  },
+  "content": {
+    "html": "...",
+    "markdown": "...",
+    "wordCount": 0,
+    "headings": []
+  },
+  "quality": {
+    "seoScore": 0,
+    "readabilityScore": 0,
+    "humanScore": 0
+  },
+  "suggestions": {
+    "internalLinks": [],
+    "imagePrompts": [],
+    "improvements": []
+  }
+}
+```
+
+---
+
+## UX Flow
+
+```
+STEP 1: Brand Setup (once)
+        ↓
+STEP 2: Select Mode (Quick / Standard / Expert)
+        ↓
+STEP 3: Enter Inputs (based on mode)
+        ↓
+STEP 4: AI Generates + Shows Preview
+        ↓
+STEP 5: User Edits / Approves
+        ↓
+STEP 6: Export / Publish
+```
+
+---
+
+*Framework for AIBlogPro user input collection*
