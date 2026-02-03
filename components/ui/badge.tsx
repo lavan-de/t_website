@@ -20,7 +20,7 @@ export function Badge({
             variant === "amber",
           "bg-green-500/20 text-green-300 border border-green-500/30":
             variant === "green",
-          "bg-amber-700/20 text-amber-400 border border-amber-700/30":
+          "bg-blue-500/20 text-blue-300 border border-blue-500/30":
             variant === "blue",
         },
         className
