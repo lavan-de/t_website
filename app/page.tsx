@@ -1,24 +1,22 @@
 import { Header, Footer } from "@/components/layout";
 import {
   HeroSection,
-  FeaturesSection,
-  HowItWorksSection,
-  PricingSection,
-  FAQSection,
-  CTASection,
+  PropertiesSection,
+  ServicesSection,
+  AboutSection,
+  ContactSection,
 } from "@/components/sections";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900/20 to-slate-900">
+      <main className="min-h-screen bg-gradient-to-br from-neutral-950 via-stone-900/30 to-neutral-950">
         <HeroSection />
-        <FeaturesSection />
-        <HowItWorksSection />
-        <PricingSection />
-        <FAQSection />
-        <CTASection />
+        <PropertiesSection />
+        <ServicesSection />
+        <AboutSection />
+        <ContactSection />
       </main>
       <Footer />
     </>

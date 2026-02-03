@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { DashboardHeader } from "@/components/dashboard";
+import { useAuth } from "@/components/dashboard/auth-provider";
 import { Button } from "@/components/ui";
 import {
   Sparkles,
@@ -72,6 +73,7 @@ interface FormData {
 }
 
 export default function BlogGeneratorPage() {
+  const { userEmail } = useAuth();
   const [currentStep, setCurrentStep] = useState(1);
   const [isGenerated, setIsGenerated] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -197,6 +199,7 @@ export default function BlogGeneratorPage() {
         <DashboardHeader
           title="Blog Generated!"
           description="Your SEO-optimized blog post is ready"
+          userEmail={userEmail || undefined}
         />
         <div className="p-6">
           <div className="mb-6 flex items-center gap-4">
@@ -448,6 +451,7 @@ export default function BlogGeneratorPage() {
       <DashboardHeader
         title="Blog Generator"
         description="Create SEO-optimized, human-quality blog posts with AI"
+        userEmail={userEmail || undefined}
       />
 
       <div className="p-6">

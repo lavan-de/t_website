@@ -1,4 +1,8 @@
 export { HeroSection } from "./hero";
+export { PropertiesSection } from "./properties";
+export { ServicesSection } from "./services";
+export { AboutSection } from "./about";
+export { ContactSection } from "./contact";
 export { FeaturesSection } from "./features";
 export { HowItWorksSection } from "./how-it-works";
 export { PricingSection } from "./pricing";

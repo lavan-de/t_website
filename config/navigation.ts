@@ -1,20 +1,20 @@
 export const mainNavItems = [
-  { title: "Features", href: "#features" },
-  { title: "How It Works", href: "#how-it-works" },
-  { title: "Pricing", href: "#pricing" },
-  { title: "FAQ", href: "#faq" },
+  { title: "Properties", href: "#properties" },
+  { title: "Services", href: "#services" },
+  { title: "About", href: "#about" },
+  { title: "Contact", href: "#contact" },
 ];
 
 export const footerNavItems = {
-  product: [
-    { title: "Features", href: "#features" },
-    { title: "Pricing", href: "#pricing" },
-    { title: "FAQ", href: "#faq" },
+  properties: [
+    { title: "Browse Properties", href: "#properties" },
+    { title: "Luxury Homes", href: "#luxury" },
+    { title: "Commercial", href: "#commercial" },
   ],
   company: [
-    { title: "About", href: "/about" },
-    { title: "Blog", href: "/blog" },
-    { title: "Contact", href: "/contact" },
+    { title: "About Us", href: "#about" },
+    { title: "Our Team", href: "#team" },
+    { title: "Contact", href: "#contact" },
   ],
   legal: [
     { title: "Privacy Policy", href: "/privacy" },

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { DashboardHeader } from "@/components/dashboard";
+import { useAuth } from "@/components/dashboard/auth-provider";
 import { Button } from "@/components/ui";
 import {
   FileText,
@@ -33,6 +34,7 @@ interface Blog {
 }
 
 export default function MyContentPage() {
+  const { userEmail } = useAuth();
   const [blogs, setBlogs] = useState<Blog[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -104,6 +106,7 @@ export default function MyContentPage() {
         <DashboardHeader
           title="My Content"
           description="View and manage your generated blog posts"
+          userEmail={userEmail || undefined}
         />
         <div className="flex items-center justify-center p-12">
           <Loader2 className="h-8 w-8 animate-spin text-purple-500" />
@@ -118,6 +121,7 @@ export default function MyContentPage() {
         <DashboardHeader
           title="My Content"
           description="View and manage your generated blog posts"
+          userEmail={userEmail || undefined}
         />
         <div className="p-6">
           <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-6">
@@ -139,6 +143,7 @@ export default function MyContentPage() {
       <DashboardHeader
         title="My Content"
         description="View and manage your generated blog posts"
+        userEmail={userEmail || undefined}
       />
       
       <div className="p-6">

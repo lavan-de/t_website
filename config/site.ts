@@ -1,21 +1,21 @@
 export const siteConfig = {
-  name: "AIBlogPro",
+  name: "SOEZ Estates",
   description:
-    "Generate SEO-optimized blog content that aligns with your brand voice. Boost your website traffic with intelligent content creation.",
-  url: "https://aiblogpro.vercel.app",
-  ogImage: "https://aiblogpro.vercel.app/og.jpg",
-  creator: "Your Name",
+    "Premium real estate services for luxury properties. Find your dream home with expert guidance and personalized service.",
+  url: "https://soez-estates.vercel.app",
+  ogImage: "https://soez-estates.vercel.app/og.jpg",
+  creator: "SOEZ Estates",
   keywords: [
-    "AI blog generator",
-    "SEO content",
-    "blog automation",
-    "content marketing",
-    "AI writing",
-    "blog tool",
+    "real estate",
+    "luxury properties",
+    "home buying",
+    "property management",
+    "real estate agent",
+    "property listings",
   ],
   links: {
-    twitter: "https://twitter.com/aiblogpro",
-    github: "https://github.com/aiblogpro",
+    twitter: "https://twitter.com/luxuryestates",
+    linkedin: "https://linkedin.com/company/luxuryestates",
   },
 };
 

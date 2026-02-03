@@ -4,13 +4,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
   LayoutDashboard,
+  Home,
+  Users,
+  Calendar,
+  BarChart3,
+  MessageSquare,
   FileText,
   Settings,
-  BarChart3,
-  Users,
-  CreditCard,
   HelpCircle,
   LogOut,
+  Building2,
   Sparkles,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -27,7 +30,7 @@ const mainNavItems = [
     title: "Blog Generator",
     href: "/dashboard/blog-generator",
     icon: Sparkles,
-    active: true, // This one works!
+    active: true,
     highlight: true,
   },
   {
@@ -37,24 +40,43 @@ const mainNavItems = [
     active: true,
   },
   {
+    title: "Listings",
+    href: "/dashboard/listings",
+    icon: Home,
+    active: false,
+  },
+  {
+    title: "Leads",
+    href: "/dashboard/leads",
+    icon: Users,
+    active: false,
+  },
+  {
+    title: "Calendar",
+    href: "/dashboard/calendar",
+    icon: Calendar,
+    active: false,
+  },
+  {
     title: "Analytics",
-    href: "#",
+    href: "/dashboard/analytics",
     icon: BarChart3,
     active: false,
   },
   {
-    title: "Team",
-    href: "#",
-    icon: Users,
+    title: "Messages",
+    href: "/dashboard/messages",
+    icon: MessageSquare,
     active: false,
+    badge: "3",
   },
 ];
 
 const bottomNavItems = [
   {
-    title: "Billing",
+    title: "Documents",
     href: "#",
-    icon: CreditCard,
+    icon: FileText,
     active: false,
   },
   {
@@ -75,12 +97,12 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-white/10 bg-slate-900/50 backdrop-blur-xl">
+    <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r border-white/10 bg-neutral-950/50 backdrop-blur-xl">
       <div className="flex h-full flex-col">
         {/* Logo */}
         <div className="flex h-16 items-center gap-2 border-b border-white/10 px-6">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-pink-500">
-            <Sparkles className="h-4 w-4 text-white" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-amber-700 to-amber-900">
+            <Building2 className="h-4 w-4 text-white" />
           </div>
           <span className="text-lg font-bold text-white">{siteConfig.name}</span>
         </div>
@@ -101,22 +123,27 @@ export function Sidebar() {
                 className={cn(
                   "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all",
                   isActive
-                    ? "bg-purple-500/20 text-purple-400"
+                    ? "bg-amber-700/20 text-amber-500"
                     : item.active
                     ? "text-gray-300 hover:bg-white/5 hover:text-white"
                     : "cursor-not-allowed text-gray-500",
-                  item.highlight && !isActive && "text-purple-400 hover:text-purple-300"
+                  item.highlight && !isActive && item.active && "text-amber-500 hover:text-amber-400"
                 )}
                 onClick={(e) => !item.active && e.preventDefault()}
               >
                 <Icon className="h-5 w-5" />
                 {item.title}
-                {item.highlight && (
-                  <span className="ml-auto rounded-full bg-purple-500/20 px-2 py-0.5 text-xs text-purple-400">
+                {item.badge && (
+                  <span className="ml-auto flex h-5 w-5 items-center justify-center rounded-full bg-amber-700 text-xs text-white">
+                    {item.badge}
+                  </span>
+                )}
+                {item.highlight && item.active && !item.badge && (
+                  <span className="ml-auto rounded-full bg-amber-700/20 px-2 py-0.5 text-xs text-amber-500">
                     New
                   </span>
                 )}
-                {!item.active && (
+                {!item.active && !item.badge && (
                   <span className="ml-auto rounded-full bg-gray-700 px-2 py-0.5 text-xs text-gray-400">
                     Soon
                   </span>
@@ -159,16 +186,16 @@ export function Sidebar() {
 
           {/* User Section */}
           <div className="mt-4 flex items-center gap-3 rounded-lg bg-white/5 px-3 py-3">
-            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-sm font-medium text-white">
-              U
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-amber-700 to-amber-900 text-sm font-medium text-white">
+              JD
             </div>
             <div className="flex-1">
-              <p className="text-sm font-medium text-white">User</p>
-              <p className="text-xs text-gray-400">Free Plan</p>
+              <p className="text-sm font-medium text-white">John Doe</p>
+              <p className="text-xs text-gray-400">Admin</p>
             </div>
-            <button className="rounded-lg p-1.5 text-gray-400 hover:bg-white/5 hover:text-white">
+            <Link href="/" className="rounded-lg p-1.5 text-gray-400 hover:bg-white/5 hover:text-white">
               <LogOut className="h-4 w-4" />
-            </button>
+            </Link>
           </div>
         </div>
       </div>
