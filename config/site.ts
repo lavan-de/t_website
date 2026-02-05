@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "SOEZ Estates",
   description:
     "Premium real estate services for luxury properties. Find your dream home with expert guidance and personalized service.",
-  url: "https://soez-estates.vercel.app",
-  ogImage: "https://soez-estates.vercel.app/og.jpg",
+  url: "https://www.soez-estates.nl",
+  ogImage: "https://www.soez-estates.nl/og.jpg",
   creator: "SOEZ Estates",
   keywords: [
     "real estate",
