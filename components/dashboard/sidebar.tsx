@@ -15,6 +15,7 @@ import {
   LogOut,
   Building2,
   Sparkles,
+  Mail,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
@@ -37,6 +38,12 @@ const mainNavItems = [
     title: "My Content",
     href: "/dashboard/my-content",
     icon: FileText,
+    active: true,
+  },
+  {
+    title: "Test Email",
+    href: "/dashboard/test-email",
+    icon: Mail,
     active: true,
   },
   {
