@@ -1,8 +1,6 @@
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 /**
  * API route to send emails using Resend.
  * 
@@ -35,6 +33,10 @@ export async function POST(request: Request) {
         { status: 500 }
       );
     }
+
+    // Initialize Resend inside the function (not at module level)
+    // This prevents build-time errors if env var isn't available
+    const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Send email
     const { data, error } = await resend.emails.send({
